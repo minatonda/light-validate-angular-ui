@@ -1,0 +1,46 @@
+{
+  "name": "light-validate-angular-ui",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minatonda/light-validate-angular-ui.git"
+  },
+  "homepage": "https://github.com/minatonda/light-validate-angular-ui",
+  "keywords": [
+    "light",
+    "validate",
+    "light-validate",
+    "directive",
+    "module",
+    "decorator",
+    "mapping",
+    "rule",
+    "annotation",
+    "functional",
+    "reusability",
+    "facility",
+    "pure",
+    "angular",
+    "ng",
+    "ui"
+  ],
+  "author": "minatonda",
+  "license": "ISC",
+  "peerDependencies": {
+    "@angular/core": "~8.2.0",
+    "@angular/common": "~8.2.0"
+  },
+  "main": "bundles/light-validate-angular-ui.umd.js",
+  "module": "fesm5/light-validate-angular-ui.js",
+  "es2015": "fesm2015/light-validate-angular-ui.js",
+  "esm5": "esm5/light-validate-angular-ui.js",
+  "esm2015": "esm2015/light-validate-angular-ui.js",
+  "fesm5": "fesm5/light-validate-angular-ui.js",
+  "fesm2015": "fesm2015/light-validate-angular-ui.js",
+  "typings": "light-validate-angular-ui.d.ts",
+  "metadata": "light-validate-angular-ui.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
