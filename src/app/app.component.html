@@ -1,0 +1,37 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <br>
+  <div>
+    <label>Name</label>
+    <br>
+    <input type="text" placeholder="Name" [(ngModel)]="appModel.name" [UiLightValidate]="lightRuleMapping"
+      UiLightProperty="name" [UiLightTarget]="appModel">
+  </div>
+  <br>
+  <br>
+  <br>
+  <div>
+    <label>UserName</label>
+    <br>
+    <input type="text" placeholder="Username" [(ngModel)]="appModel.username" [UiLightValidate]="lightRuleMapping"
+      UiLightProperty="username" [UiLightTarget]="appModel">
+  </div>
+  <br>
+  <br>
+  <br>
+  <div>
+    <label>Password</label>
+    <br>
+    <input type="number" placeholder="Password" [(ngModel)]="appModel.password" [UiLightValidate]="lightRuleMapping"
+      UiLightProperty="password" [UiLightTarget]="appModel">
+  </div>
+  <br>
+  <br>
+  <br>
+  <div>
+    <label>ConfirmPassword</label>
+    <br>
+    <input type="number" placeholder="Confirm Password" [(ngModel)]="appModel.confirmPassword"
+      [UiLightValidate]="lightRuleMapping" UiLightProperty="confirmPassword" [UiLightTarget]="appModel">
+  </div>
+</div>
