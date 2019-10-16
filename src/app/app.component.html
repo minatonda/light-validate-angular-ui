@@ -1,37 +1,74 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <br>
-  <div>
-    <label>Name</label>
-    <br>
-    <input type="text" placeholder="Name" [(ngModel)]="appModel.name" [UiLightValidate]="lightRuleMapping"
-      UiLightProperty="name" [UiLightTarget]="appModel">
-  </div>
-  <br>
-  <br>
-  <br>
-  <div>
-    <label>UserName</label>
-    <br>
-    <input type="text" placeholder="Username" [(ngModel)]="appModel.username" [UiLightValidate]="lightRuleMapping"
-      UiLightProperty="username" [UiLightTarget]="appModel">
-  </div>
-  <br>
-  <br>
-  <br>
-  <div>
-    <label>Password</label>
-    <br>
-    <input type="number" placeholder="Password" [(ngModel)]="appModel.password" [UiLightValidate]="lightRuleMapping"
-      UiLightProperty="password" [UiLightTarget]="appModel">
-  </div>
-  <br>
-  <br>
-  <br>
-  <div>
-    <label>ConfirmPassword</label>
-    <br>
-    <input type="number" placeholder="Confirm Password" [(ngModel)]="appModel.confirmPassword"
-      [UiLightValidate]="lightRuleMapping" UiLightProperty="confirmPassword" [UiLightTarget]="appModel">
+<div class="container-fluid pt-2">
+  <div class="row">
+    <div class="col-12 col-md-12 form-group">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 form-group">
+              <label class="control-label">Name</label>
+              <input class="form-control" type="text" placeholder="Name" [(ngModel)]="appModel.name"
+                [UiLightValidate]="lightRuleMapping" UiLightProperty="name" [UiLightTarget]="appModel">
+            </div>
+            <div class="col-12 form-group">
+              <label class="control-label">UserName</label>
+              <input class="form-control" type="text" placeholder="Username" [(ngModel)]="appModel.username"
+                [UiLightValidate]="lightRuleMapping" UiLightProperty="username" [UiLightTarget]="appModel">
+            </div>
+            <div class="col-12 form-group">
+              <label class="control-label">Password</label>
+              <input class="form-control" type="number" placeholder="Password" [(ngModel)]="appModel.password"
+                [UiLightValidate]="lightRuleMapping" UiLightProperty="password" [UiLightTarget]="appModel">
+            </div>
+            <div class="col-12 form-group">
+              <label class="control-label">ConfirmPassword</label>
+              <input class="form-control" type="number" placeholder="Confirm Password"
+                [(ngModel)]="appModel.confirmPassword" [UiLightValidate]="lightRuleMapping"
+                UiLightProperty="confirmPassword" [UiLightTarget]="appModel">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 form-group">
+      <b>See code below</b>
+      <hr>
+    </div>
+    <div class="col-12 col-md-12 form-group">
+      <div class="card">
+        <div class="card-header">
+          component.ts
+        </div>
+        <div class="card-body">
+          <pre>
+            <code>{{getHtmlComponent()}}</code>
+          </pre>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 form-group">
+      <div class="card">
+        <div class="card-header">
+          model.light-mapping.ts
+        </div>
+        <div class="card-body">
+          <pre>
+                <code>{{getHtmlLightMapping()}}</code>
+              </pre>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 form-group">
+      <div class="card">
+        <div class="card-header">
+          component.html
+        </div>
+        <div class="card-body">
+          <pre>
+              <code>{{getHtmlTemplate()}}</code>
+            </pre>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

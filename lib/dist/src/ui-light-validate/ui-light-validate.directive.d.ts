@@ -1,12 +1,14 @@
 import { ElementRef, EventEmitter } from '@angular/core';
 import { LightException } from 'light-validate';
+import { UiLightValidateResolver } from './ui-light-validate.resolver';
 export declare class UiLightValidateDirective {
-    private elementRef;
-    uiLightValidate: any;
-    uiLightProperty: string;
-    uiLightTarget: any;
-    uiLightOnValidate: EventEmitter<LightException>;
-    constructor(elementRef: ElementRef);
+    private resolver;
+    private el;
+    validate: any;
+    property: string;
+    target: any;
+    onValidate: EventEmitter<LightException>;
+    constructor(resolver: UiLightValidateResolver, el: ElementRef);
     ngOnInit(): void;
     initialize(el: HTMLElement): void;
     isValidateOnBlurEnabled(el: HTMLElement): boolean;

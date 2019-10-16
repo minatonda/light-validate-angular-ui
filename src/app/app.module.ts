@@ -13,7 +13,11 @@ import { UiLightValidateModule } from 'light-validate-angular-ui';
     BrowserModule,
     CommonModule,
     FormsModule,
-    UiLightValidateModule
+    UiLightValidateModule.forRoot({
+      label: (exception) => {
+        return `${exception.code} ${exception.property}`;
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
-import { Directive, ElementRef, Input, EventEmitter, Output } from '@angular/core';
+import { Directive, ElementRef, Input, EventEmitter, Output, Inject } from '@angular/core';
 import { LightException, validate } from 'light-validate';
+import { RESOLVER } from './ui-light-validate.injection-tokens';
+import { UiLightValidateResolver } from './ui-light-validate.resolver';
 
 @Directive({
   selector: '[UiLightValidate]'
@@ -7,23 +9,26 @@ import { LightException, validate } from 'light-validate';
 export class UiLightValidateDirective {
 
   @Input('UiLightValidate')
-  public uiLightValidate: any;
+  public validate: any;
 
   @Input('UiLightProperty')
-  public uiLightProperty: string;
+  public property: string;
 
   @Input('UiLightTarget')
-  public uiLightTarget: any;
+  public target: any;
 
   @Output('UiLightOnValidate')
-  public uiLightOnValidate: EventEmitter<LightException> = new EventEmitter();
+  public onValidate: EventEmitter<LightException> = new EventEmitter();
 
-  constructor(private elementRef: ElementRef) {
-
+  constructor(
+    @Inject(RESOLVER)
+    private resolver: UiLightValidateResolver,
+    private el: ElementRef
+  ) {
   }
 
   public ngOnInit() {
-    this.initialize(this.elementRef.nativeElement);
+    this.initialize(this.el.nativeElement);
   }
 
   public initialize(el: HTMLElement) {
@@ -46,22 +51,22 @@ export class UiLightValidateDirective {
       el.parentElement.classList.add(this.getElementValidClass(el));
 
       //disparar callback externo onValidate
-      this.uiLightOnValidate.emit(null);
+      this.onValidate.emit(null);
     };
 
-    const onValidateCatch = (errors: LightException[]) => {
-      const error = errors.shift();
+    const onValidateCatch = (exceptions: LightException[]) => {
+      const exception = exceptions.shift();
 
-      if (error) {
+      if (exception) {
         //setar texto do span com classe 'error' referente ao campo do DOM...
-        htmlErrorElement.innerHTML = error.code;
+        htmlErrorElement.innerHTML = this.resolver ? this.resolver.label(exception) : exception.code;
         //adicionar span com classe 'error' referente ao campo do DOM...caso já não esteja presente
         !el.parentNode.contains(htmlErrorElement) && el.parentNode.appendChild(htmlErrorElement);
         el.parentElement.classList.add(this.getElementInvalidClass(el));
         el.parentElement.classList.remove(this.getElementValidClass(el));
 
         //disparar callback externo onValidate
-        this.uiLightOnValidate.emit(error);
+        this.onValidate.emit(exception);
       }
       else {
         onValidateThen();
@@ -77,7 +82,7 @@ export class UiLightValidateDirective {
     if (this.isValidateOnBlurEnabled(el)) {
       el.onblur = (event) => {
         firstTrigger = false;
-        validate(this.uiLightTarget, this.uiLightValidate, this.uiLightProperty)
+        validate(this.target, this.validate, this.property)
           .then(() => onValidateThen())
           .catch((errors) => onValidateCatch(errors))
           .finally(() => onValidateFinally());
@@ -87,7 +92,7 @@ export class UiLightValidateDirective {
     if (this.isValidateOnChangeEnabled(el)) {
       el.onchange = (event) => {
         firstTrigger = false;
-        validate(this.uiLightTarget, this.uiLightValidate, this.uiLightProperty)
+        validate(this.target, this.validate, this.property)
           .then(() => onValidateThen())
           .catch((errors) => onValidateCatch(errors))
           .finally(() => onValidateFinally());
@@ -98,7 +103,7 @@ export class UiLightValidateDirective {
       el.onkeyup = (event) => {
         const isKeydown = el.getAttribute('modal-rule-keydown');
         if (!firstTrigger || isKeydown) {
-          validate(this.uiLightTarget, this.uiLightValidate, this.uiLightProperty)
+          validate(this.target, this.validate, this.property)
             .then(() => onValidateThen())
             .catch((errors) => onValidateCatch(errors))
             .finally(() => onValidateFinally());
@@ -107,7 +112,7 @@ export class UiLightValidateDirective {
     }
     else if (this.isValidateOnKeyUpEnabled(el)) {
       el.onkeyup = (event) => {
-        validate(this.uiLightTarget, this.uiLightValidate, this.uiLightProperty)
+        validate(this.target, this.validate, this.property)
           .then(() => onValidateThen())
           .catch((errors) => onValidateCatch(errors))
           .finally(() => onValidateFinally());

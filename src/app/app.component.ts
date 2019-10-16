@@ -16,5 +16,17 @@ export class AppComponent {
 
   public appModel: Partial<UserLightMapping> = {};
 
+  public getHtmlTemplate(){
+    return require('./template.json');
+  }
+
+  public getHtmlComponent(){
+    return require('./component.json');
+  }
+
+  public getHtmlLightMapping(){
+    return require('./lightmapping.json');
+  }
+
 
 }

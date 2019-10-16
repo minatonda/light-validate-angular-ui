@@ -1,0 +1,1 @@
+"\nexport class AppComponent {\n\n  constructor() { }\n\n  public lightRuleMapping = UserLightMapping;\n  public appModel: Partial<UserLightMapping> = {};\n\n}"
