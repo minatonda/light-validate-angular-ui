@@ -1,6 +1,9 @@
 # light-validate-angular-ui
 Angular UI module for working with the light-validate Library.
-This module provides a directive that controls properties of an html element based on a class with Light Validate mappings.
+This module provides a directive that controls properties of an html element based on a class with Light Validate mappings, and display error label when input is invalid, or hide the label when input is valid.
+
+## Sample
+https://minatonda.github.io/light-validate-angular-ui/
 
 ### Install
 
@@ -29,6 +32,29 @@ Add the 'UiLightValidateModule' on imports array of your Component's Module.
   bootstrap: [AppComponent]
 })
 ```
+### Customize Label Messages
+```typescript
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    // angular application modules.
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    // light-validate-angular-ui modules.
+    UiLightValidateModule.forRoot({
+      label: (exception) => {
+        return `${exception.code} ${exception.property}`;
+      }
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+```
+
 
 ### Development and Implementation - Create your LightRules ...
 Create some LightRules...
