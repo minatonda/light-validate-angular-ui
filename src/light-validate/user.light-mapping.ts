@@ -7,13 +7,13 @@ import { LightRuleRequired } from './light-rule-required';
 
 export class UserLightMapping {
 
-  @LightValidate(LightRuleRequired, LightRuleOnlyText, LightRuleMustNotBeTheSame('username'))
+  @LightValidate(LightRuleRequired, LightRuleOnlyText)
   public name: string = undefined;
 
   @LightValidate(LightRuleRequired, LightRuleOnlyText, LightRuleMustNotBeTheSame('name'))
   public username: string = undefined;
 
-  @LightValidate(LightRuleRequired, LightRuleOnlyNumber, LightRuleMustBeTheSame('confirmPassword'))
+  @LightValidate(LightRuleRequired, LightRuleOnlyNumber)
   public password: string = undefined;
 
   @LightValidate(LightRuleRequired, LightRuleOnlyNumber, LightRuleMustBeTheSame('password'))

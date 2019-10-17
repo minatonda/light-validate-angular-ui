@@ -1,6 +1,6 @@
 {
   "name": "light-validate-angular-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/minatonda/light-validate-angular-ui.git"
@@ -28,7 +28,9 @@
   "license": "ISC",
   "peerDependencies": {
     "@angular/core": "~8.2.0",
-    "@angular/common": "~8.2.0"
+    "@angular/common": "~8.2.0",
+    "light-validate": "~1.0.3",
+    "reflect-metadata": "~0.1.13"
   },
   "main": "bundles/light-validate-angular-ui.umd.js",
   "module": "fesm5/light-validate-angular-ui.js",

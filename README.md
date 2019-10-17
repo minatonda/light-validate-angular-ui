@@ -29,6 +29,11 @@ Add the 'UiLightValidateModule' on imports array of your Component's Module.
   bootstrap: [AppComponent]
 })
 ```
+### Customize Label Messages
+```
+
+```
+
 
 ### Development and Implementation - Create your LightRules ...
 Create some LightRules...
