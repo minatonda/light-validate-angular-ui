@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, EventEmitter, Output, Inject } from '@angular/core';
 import { LightException, validate } from 'light-validate';
-import { RESOLVER } from './ui-light-validate.injection-tokens';
+import { RESOLVER, MAPPINGS } from './ui-light-validate.injection-tokens';
 import { UiLightValidateResolver } from './ui-light-validate.resolver';
 
 @Directive({
@@ -21,8 +21,8 @@ export class UiLightValidateDirective {
   public onValidate: EventEmitter<LightException> = new EventEmitter();
 
   constructor(
-    @Inject(RESOLVER)
-    private resolver: UiLightValidateResolver,
+    @Inject(RESOLVER) private resolver: UiLightValidateResolver,
+    @Inject(MAPPINGS) private mappings: Array<any>,
     private el: ElementRef
   ) {
   }
@@ -134,6 +134,10 @@ export class UiLightValidateDirective {
 
   public isIconEnabled(el: HTMLElement) {
     return this.getBoolValueFromAttr(el, 'ui-light-validate-icon-enabled', false);
+  }
+
+  public getMapping(mapping: any, mappings: Array<any> = []) {
+    return typeof mapping === 'string' ? mappings.find(m => m.name === mapping) : mapping;
   }
 
   public getElementInvalidClass(el: HTMLElement) {

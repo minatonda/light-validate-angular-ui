@@ -8,22 +8,22 @@
             <div class="col-12 form-group">
               <label class="control-label">Name</label>
               <input class="form-control" type="text" placeholder="Name" [(ngModel)]="appModel.name"
-                [UiLightValidate]="lightRuleMapping" UiLightProperty="name" [UiLightTarget]="appModel">
+                UiLightValidate="UserLightMapping" UiLightProperty="name" [UiLightTarget]="appModel">
             </div>
             <div class="col-12 form-group">
               <label class="control-label">UserName</label>
               <input class="form-control" type="text" placeholder="Username" [(ngModel)]="appModel.username"
-                [UiLightValidate]="lightRuleMapping" UiLightProperty="username" [UiLightTarget]="appModel">
+                UiLightValidate="UserLightMapping" UiLightProperty="username" [UiLightTarget]="appModel">
             </div>
             <div class="col-12 form-group">
               <label class="control-label">Password</label>
               <input class="form-control" type="number" placeholder="Password" [(ngModel)]="appModel.password"
-                [UiLightValidate]="lightRuleMapping" UiLightProperty="password" [UiLightTarget]="appModel">
+                UiLightValidate="UserLightMapping" UiLightProperty="password" [UiLightTarget]="appModel">
             </div>
             <div class="col-12 form-group">
               <label class="control-label">ConfirmPassword</label>
               <input class="form-control" type="number" placeholder="Confirm Password"
-                [(ngModel)]="appModel.confirmPassword" [UiLightValidate]="lightRuleMapping"
+                [(ngModel)]="appModel.confirmPassword" UiLightValidate="UserLightMapping"
                 UiLightProperty="confirmPassword" [UiLightTarget]="appModel">
             </div>
           </div>

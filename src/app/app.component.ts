@@ -10,21 +10,20 @@ export class AppComponent {
 
   public title = 'light-validate-angular-ui';
 
-  constructor() { }
-
-  public lightRuleMapping = UserLightMapping;
+  constructor() {
+  }
 
   public appModel: Partial<UserLightMapping> = {};
 
-  public getHtmlTemplate(){
+  public getHtmlTemplate() {
     return require('./template.json');
   }
 
-  public getHtmlComponent(){
+  public getHtmlComponent() {
     return require('./component.json');
   }
 
-  public getHtmlLightMapping(){
+  public getHtmlLightMapping() {
     return require('./lightmapping.json');
   }
 

@@ -1,5 +1,5 @@
 import { ModuleWithProviders } from '@angular/core';
-import { UiLightValidateResolver } from './ui-light-validate.resolver';
+import { UiLightValidateConfig } from './ui-light-validate.coonfig';
 export declare class UiLightValidateModule {
-    static forRoot(resolver: UiLightValidateResolver): ModuleWithProviders;
+    static forRoot(config: Partial<UiLightValidateConfig>): ModuleWithProviders;
 }

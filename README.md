@@ -1,3 +1,4 @@
+
 # light-validate-angular-ui
 Angular UI module for working with the light-validate Library.
 This module provides a directive that controls properties of an html element based on a class with Light Validate mappings, and display error label when input is invalid, or hide the label when input is valid.
@@ -44,9 +45,16 @@ Add the 'UiLightValidateModule' on imports array of your Component's Module.
     CommonModule,
     FormsModule,
     // light-validate-angular-ui modules.
-    UiLightValidateModule.forRoot({
-      label: (exception) => {
-        return `${exception.code} ${exception.property}`;
+    UiLightValidateModule.forRoot(
+      resolver: {
+        label: (exception) => {
+          // the value you return here will be the value displayed in error labels error messages, use Light Exception data to compose the message as desired.
+          return `${exception.code} ${exception.property}`;
+        },
+        mappings: [
+	        // register your mapping classes here to access directly by name in the directive declaration in the template
+			UserLightMapping
+		]
       }
     })
   ],
@@ -142,10 +150,12 @@ export class AppComponent {
 
   constructor() { }
 
+  // You can also register an array of mapping classes in the forRoot function, and pass the class name as a string in the directive's 'UiLightValidate' attribute value, instead of using binding directly on the component.
   public lightRuleMapping = UserLightMapping; // <- Mapping Class Property
 
+  // Here, I set my data model type to Partial <MyMappingClass> for typing purposes only, the typing code is optional, but the object to be validated must follow the interface of the target mapping class.
   public appModel: Partial<UserLightMapping> = {}; // <- Your Data Model.
-  //Here, I set my data model type to Partial <MyMappingClass> for typing purposes only, the typing code is optional, but the object to be validated must follow the interface of the target mapping class.
+  
   
 }
 
@@ -182,8 +192,16 @@ And call the directive on your template code
   <div>
     <label>ConfirmPassword</label>
     <br>
-    <input type="number" placeholder="Confirm Password" [(ngModel)]="appModel.confirmPassword"
-      [UiLightValidate]="lightRuleMapping" UiLightProperty="confirmPassword" [UiLightTarget]="appModel">
+    <input type="number" 
+	       placeholder="Confirm Password" 
+	       [(ngModel)]="appModel.confirmPassword"
+           [UiLightValidate]="lightRuleMapping" 
+           UiLightProperty="confirmPassword" 
+           [UiLightTarget]="appModel">
+		<!--  
+			If you registered the mapping class in the mappings parameter in the module's forRoot function, you can also use the name of mapping it as follows:
+		    UiLightValidate="UserLightMapping" 
+		!-->
   </div>
 </div>
 ```
@@ -192,7 +210,7 @@ And call the directive on your template code
 
 | Attribute                       	| Description                                                                          	| Type    	| Default       	|
 |---------------------------------	|--------------------------------------------------------------------------------------	|---------	|---------------	|
-| UiLightValidate                 	| Directive selector, also receives the mapping class.                                 	| Object  	| undefined     	|
+| UiLightValidate                 	| Directive selector, also receives the mapping class directly, or the name of the class if the mapping class is registered on forRoot 'mapping' option.                                 	| Object/string  	| undefined     	|
 | UiLightProperty                 	| Receives the property key of the target to be validated.                             	| string  	| undefined     	|
 | UiLightTarget                   	| Receives the target to be validated.                                                 	| Object  	| undefined     	|
 | ui-light-validate-on-blur       	| Enables validation on the blur event of the element.                                 	| boolean 	| true          	|
