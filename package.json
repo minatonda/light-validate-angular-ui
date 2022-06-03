@@ -39,7 +39,7 @@
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
-    "@angular/core": "~8.2.0",
+    "@angular/core": "~11.0.5",
     "@angular/forms": "~8.2.0",
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
@@ -53,7 +53,7 @@
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
-    "@angular/core": "~8.2.0",
+    "@angular/core": "~11.0.5",
     "@angular/forms": "~8.2.0",
     "light-validate": "~1.0.3",
     "reflect-metadata": "~0.1.13"
